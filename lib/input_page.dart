@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -23,6 +24,7 @@ class _InputPageState extends State<InputPage> {
   // Color maleCardColour = inactiveColour;
   // Color femaleCardColour = inactiveColour;
   Gender? selectedGender;
+  int height = 150;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class _InputPageState extends State<InputPage> {
           ),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
               child: Row(
@@ -68,10 +71,46 @@ class _InputPageState extends State<InputPage> {
             ),
             Expanded(
               child: ReusableCard(
-                onPress: () {},
-                colour: primaryColour,
-                cardChild: Container(),
-              ),
+                  onPress: () {},
+                  colour: primaryColour,
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'HEIGHT',
+                        style: TextStyle(fontSize: 18, color: Colors.white60),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          Text(
+                            height.toString(),
+                            style: TextStyle(
+                                fontSize: 50,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900),
+                          ),
+                          Text(
+                            'cm',
+                          )
+                        ],
+                      ),
+                      Slider(
+                        value: height.toDouble(),
+                        min: 100.0,
+                        max: 250.0,
+                        activeColor: Color(0xFFEB1555),
+                        inactiveColor: Color(0xFF8D8E98),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.round();
+                          });
+                        },
+                      )
+                    ],
+                  )),
             ),
             Expanded(
                 child: Row(
