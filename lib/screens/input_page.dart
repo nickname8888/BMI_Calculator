@@ -1,3 +1,4 @@
+import 'package:bmi_calc/calculator_brain.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -6,6 +7,7 @@ import '../components/bottom_button.dart';
 import '../components/icon_content.dart';
 import '../components/reusable_card.dart';
 import '../components/round_icon_button.dart';
+import 'results_page.dart';
 
 const bottomContainerHeight = 80.0;
 const primaryColour = Color(0xFF1D1E33);
@@ -229,7 +231,15 @@ class _InputPageState extends State<InputPage> {
             )),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'ResultsPage');
+                CalculatorBrain calc =
+                    CalculatorBrain(weight: weight, height: height);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ResultsPage(
+                            bmiResult: calc.calcBmi(),
+                            resultText: calc.getResult(),
+                            resultInterpretation: calc.getInterpretation())));
               },
               child: BottomButton(
                 title: 'CALCULATE',
