@@ -237,9 +237,11 @@ class _InputPageState extends State<InputPage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => ResultsPage(
-                            bmiResult: calc.calcBmi(),
-                            resultText: calc.getResult(),
-                            resultInterpretation: calc.getInterpretation())));
+                              bmiResult: calc.calcBmi(),
+                              resultText: calc.getResult(),
+                              resultInterpretation: calc.getInterpretation(),
+                              bmiResultColor: calc.getColour(),
+                            )));
               },
               child: BottomButton(
                 title: 'CALCULATE',

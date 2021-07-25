@@ -1,11 +1,14 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 class CalculatorBrain {
   CalculatorBrain({required this.weight, required this.height});
   final int height;
   final int weight;
 
   late double _bmi;
+  late Color _color;
 
   String calcBmi() {
     _bmi = weight / pow((height * 0.01), 2);
@@ -20,6 +23,18 @@ class CalculatorBrain {
         return 'NORMAL';
       } else {
         return 'UNDERWEIGHT';
+      }
+    }
+  }
+
+  Color getColour() {
+    if (_bmi > 25) {
+      return _color = Colors.red;
+    } else {
+      if (_bmi >= 18.5) {
+        return _color = Colors.green;
+      } else {
+        return _color = Colors.orange;
       }
     }
   }
