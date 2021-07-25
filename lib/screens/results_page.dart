@@ -9,11 +9,13 @@ class ResultsPage extends StatelessWidget {
   ResultsPage(
       {required this.bmiResult,
       required this.resultText,
-      required this.resultInterpretation});
+      required this.resultInterpretation,
+      required this.bmiResultColor});
 
   final String bmiResult;
   final String resultText;
   final String resultInterpretation;
+  final Color bmiResultColor;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,7 @@ class ResultsPage extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF24D876),
+                      color: bmiResultColor,
                     ),
                   ),
                   Text(
